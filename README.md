@@ -1,12 +1,19 @@
 # 🌡️ Mini Server Room Monitoring
 
-Smart room monitoring dashboard with sensor filtering, anomaly detection, and Telegram alerts.
+Smart room monitoring dashboard with **sensor filtering**, **anomaly detection**, **incident logging**, and **Telegram alerts**.
 
 <p align="center">
   <img src="https://img.shields.io/badge/ESP32-Sensor%20Node-303030?style=for-the-badge&logo=espressif&logoColor=white" />
   <img src="https://img.shields.io/badge/Flask-Dashboard-000000?style=for-the-badge&logo=flask&logoColor=white" />
   <img src="https://img.shields.io/badge/Chart.js-Visualization-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/Telegram-Alert-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Moving%20Average-5%20Samples-38BDF8?style=flat-square" />
+  <img src="https://img.shields.io/badge/Water%20Leak-2%20Readings%20Debounce-22C55E?style=flat-square" />
+  <img src="https://img.shields.io/badge/Anomaly%20Detection-Z--score%20%2B%20Rate%20Change-F59E0B?style=flat-square" />
+  <img src="https://img.shields.io/badge/CSV-Incident%20Logging-8B5CF6?style=flat-square" />
 </p>
 
 ---
@@ -29,6 +36,42 @@ Dashboard + Incident Log + Telegram Alert
 
 ---
 
+## 📊 Dashboard Preview
+
+<p align="center">
+  <img src="./assets/dashboard-overview.png" width="90%" />
+</p>
+
+<p align="center">
+  <b>Main dashboard showing system status, filtered sensor values, anomaly detection, and incident log.</b>
+</p>
+
+---
+
+## 📈 Raw vs Filtered Graphs
+
+<p align="center">
+  <img src="./assets/temperature-humidity-graphs.png" width="90%" />
+</p>
+
+<p align="center">
+  <b>Raw temperature and humidity data compared with moving average filtered data.</b>
+</p>
+
+---
+
+## 📲 Telegram Alert Preview
+
+<p align="center">
+  <img src="./assets/telegram-alert.png" width="70%" />
+</p>
+
+<p align="center">
+  <b>Telegram alert message showing system status, sensor summary, AI anomaly check, and event reason.</b>
+</p>
+
+---
+
 ## ✨ Key Features
 
 - Temperature and humidity monitoring
@@ -40,34 +83,6 @@ Dashboard + Incident Log + Telegram Alert
 - Flask dashboard with Chart.js graphs
 - Incident log and CSV data logging
 - Telegram alert notification
-
----
-
-## 🧩 Hardware Used
-
-| Component | Purpose |
-|---|---|
-| ESP32 | Sensor node and HTTP client |
-| DHT22 | Temperature and humidity measurement |
-| Water sensor | Water leak detection |
-| LEDs | Local system status indicator |
-| Buzzer | Critical alert notification |
-| Computer / Laptop | Flask server and dashboard |
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Microcontroller | ESP32 |
-| Sensor | DHT22, Water Sensor |
-| Backend | Python Flask |
-| Frontend | HTML, CSS, JavaScript |
-| Visualization | Chart.js |
-| Communication | HTTP JSON |
-| Alert | Telegram Bot API |
-| Data Log | CSV |
 
 ---
 
@@ -140,17 +155,48 @@ Anomaly = Z-score is too high
 
 ---
 
+## 🧩 Hardware Used
+
+| Component | Purpose |
+|---|---|
+| ESP32 | Sensor node and HTTP client |
+| DHT22 | Temperature and humidity measurement |
+| Water sensor | Water leak detection |
+| LEDs | Local system status indicator |
+| Buzzer | Critical alert notification |
+| Computer / Laptop | Flask server and dashboard |
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Microcontroller | ESP32 |
+| Sensor | DHT22, Water Sensor |
+| Backend | Python Flask |
+| Frontend | HTML, CSS, JavaScript |
+| Visualization | Chart.js |
+| Communication | HTTP JSON |
+| Alert | Telegram Bot API |
+| Data Log | CSV |
+
+---
+
 ## 📁 Project Structure
 
 ```txt
 mini-server-room-monitoring/
 ├── README.md
 ├── server.py
+├── requirements.txt
+├── .env.example
 ├── esp32/
 │   └── mini_server_room_esp32.ino
-├── .env.example
-├── .gitignore
-└── requirements.txt
+└── assets/
+    ├── dashboard-overview.png
+    ├── temperature-humidity-graphs.png
+    └── telegram-alert.png
 ```
 
 ---
@@ -227,6 +273,19 @@ Example request:
 
 ---
 
+## 📦 Output Logs
+
+The Flask server automatically records data into CSV files.
+
+| File | Description |
+|---|---|
+| `sensor_log.csv` | Stores all sensor readings and filtered values |
+| `incident_log.csv` | Stores warning, critical, and anomaly events |
+
+These files are useful for future analysis, troubleshooting, and predictive maintenance improvement.
+
+---
+
 ## 💼 Engineering Value
 
 This project shows how a normal room monitoring system can become smarter by adding:
@@ -250,6 +309,8 @@ The goal is to reduce manual checking, detect problems earlier, and support bett
 - Add email / LINE alert
 - Add multiple sensor nodes
 - Add predictive maintenance dashboard
+- Improve UI for mobile devices
+- Add user login and system configuration page
 
 ---
 
